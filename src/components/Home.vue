@@ -75,7 +75,7 @@ export default {
   }
 
   .containervertical{
-    /* float: left; */
+    float: left;
     display: inline-block;
   }
 

@@ -71,7 +71,7 @@ export default {
 
 }
 
-console.log(this.isbotmore)
+// console.log(this.isbotmore) vue-cli4构建的环境会报错
 </script>
 
 <style scoped>

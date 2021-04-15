@@ -1,5 +1,5 @@
 <template>
-  <div class="moreoption" v-if="isoptshow" v-bind:isoptshow.sync='isoptshow'>
+  <div class="moreoption" v-if="isoptshow" v-bind:isoptshow='isoptshow'>
     <el-col :span="8" class="left">
 
   <el-form ref="form_more" :model="form_more " label-width="80px" size="mini" label-position="top">
