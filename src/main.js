@@ -3,7 +3,7 @@ import Vue from 'vue';
 import Element from 'element-ui';
 Vue.use(Element, { size: 'small', zIndex: 3000 });
 import 'element-ui/lib/theme-chalk/index.css'
-
+import '../static/css/bootstrap.min.css'
 import VueRouterN from 'vue-router'
 Vue.use(VueRouterN);
 
@@ -23,15 +23,7 @@ let router = new VueRouterN({
   ]
 })
 
-// new Vue({
-//   // el:'#app',
-//   render: h => h(App),
-//   components:{
-//     App
-//   },
-//   template: '<App/>',// 指定需要渲染到页面的模板
-//   router
-// })
+
 new Vue({
   render: h => h(App),
   router //注入router很关键
