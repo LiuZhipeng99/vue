@@ -1,15 +1,22 @@
 import  App from './App.vue'
 import Vue from 'vue';
 import Element from 'element-ui';
-Vue.use(Element, { size: 'small', zIndex: 3000 });
+import VueRouterN from 'vue-router'
+
+
+
+
 import 'element-ui/lib/theme-chalk/index.css'
 import '../static/css/bootstrap.min.css'
-import VueRouterN from 'vue-router'
+
+Vue.use(Element, { size: 'small', zIndex: 3000 });
 Vue.use(VueRouterN);
+
 
 //设置路由
 import start from './components/Home.vue'
 import train from './components/Train.vue'
+import show from './components/Show.vue'
 let router = new VueRouterN({
   routes:[
     {
@@ -19,7 +26,12 @@ let router = new VueRouterN({
     {
       path: '/train',
       component: train
+    },
+    {
+      path: '/show',
+      component: show,
     }
+
   ]
 })
 
