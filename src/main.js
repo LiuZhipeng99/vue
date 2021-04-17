@@ -22,6 +22,8 @@ Vue.use(VueRouterN);
 //   //...
 //   animationEnd = false;
 // }
+import VCharts from 'v-charts'
+Vue.use(VCharts)
 
 
 // 将自动注册所有组件为全局组件
