@@ -27,17 +27,51 @@
   import centerchart from "./showpage/centerchart";
   import leftchart from "./showpage/leftchart";
   import rightchart from "./showpage/rightchart";
+
+
+
   export default {
+    data(){
+      return{
+          deploy_result: '111'
+
+      }
+    },
     components:{
       // center_chart
       centerchart,
       rightchart,
       leftchart
     },
-    mounted() {
+    computed:{
+      event_id:function(){  //msg也相同，就没写
+        return this.$store.state.data_result.event_id
+      },
+    },
+
+
+
+    created() {
+      this.$store.dispatch('getdata')
+     // 因为axios请求花费一定时间
+      setTimeout(() => {
+        console.log(this.event_id)  // 有值
+        console.log(this.$store.state.data_result.event_type)  // 有值
+
+      }, 1000);
 
     },
-    methods: {}
+    mounted() {
+    },
+
+    methods: {
+      //post请求向服务器请求数据
+
+    },
+
+
+
+
   }
 </script>
 <style scoped>

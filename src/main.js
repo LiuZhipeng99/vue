@@ -2,12 +2,16 @@ import  App from './App.vue'
 import Vue from 'vue';
 import Element from 'element-ui';
 import VueRouterN from 'vue-router'
-
-
-
-
 import 'element-ui/lib/theme-chalk/index.css'
 import '../static/css/bootstrap.min.css'
+import store from './vuex/store'
+// var cors=require('cors');
+// Vue.use(cors({
+//   origin:['http://localhost:8081'],  //指定接收的地址
+//   methods:['GET','POST'],  //指定接收的请求类型
+//   alloweHeaders:['Content-Type','Authorization']  //指定header
+// }))
+
 
 Vue.use(Element, { size: 'small', zIndex: 3000 });
 Vue.use(VueRouterN);
@@ -38,5 +42,6 @@ let router = new VueRouterN({
 
 new Vue({
   render: h => h(App),
-  router //注入router很关键
+  router, //注入router很关键
+  store
 }).$mount('#app')
