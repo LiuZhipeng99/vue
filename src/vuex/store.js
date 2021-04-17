@@ -26,6 +26,7 @@ let store =new Vuex.Store({
     },
     mutations:{
        data_resultInit(state,res){
+           // console.log(res.data)   //没问题
            state.data_result=res.data
            const length=state.data_result.length
            const data=state.data_result
@@ -45,7 +46,7 @@ let store =new Vuex.Store({
            var slots=new Array(length)
            var paths=new Array(length)
 
-
+            //add data to array
            for(var i=0;i<length;i++){
                event_id[i]=data[i].event_id
                event_type[i]=data[i].event_type
@@ -62,6 +63,7 @@ let store =new Vuex.Store({
                paths[i]=data[i].paths
            }
 
+           //copy to data
            data.event_id=event_id
            data.event_type=event_type
            data.placement_id=placement_id
@@ -75,6 +77,7 @@ let store =new Vuex.Store({
            data.cost=cost
            data.slots=slots
            data.paths=paths
+           // console.log(data.event_id)
 
 
 
@@ -88,7 +91,8 @@ let store =new Vuex.Store({
             var formData = new FormData();
             formData.append('request_type','deploy_result');
         axios({
-                  url: 'http://127.0.0.1:5002/predict',
+                  // url: 'http://47.95.227.153:5002/predict',       //向服务器请求大型csv返回速度将会很慢
+                  url:'http://127.0.0.1:5002/predict',
                   method: 'post',
                   data: formData,
                   headers: {
