@@ -1,30 +1,45 @@
 <template>
     <div class="pie-chart">
-        <vpie :data="chartData" :loading="false" radius="1000"></vpie> 
+        <dv-active-ring-chart :config="config" style="width:auto;height:300px" />
   </div>
 </template>
 
 <script>
-import vpie from 'v-charts/lib/pie.common'
-import 'v-charts/lib/style.css'	
 export default {
-    //  :data-empty="true"
-  components:{
-      vpie,
-  },
   data(){
       return{
-          chartData:{
-              columns:["部署情况","数量"],
-              rows:[
-                  {"部署情况": "成功", "数量":200},
-                  {"部署情况": "失败", "数量":100},
-                //   {"部署成功": 100, "部署失败":200},
-                //   {"部署成功": 100, "部署失败":200}
-              ]
+            config:{
+                radius: '40%',
+            activeRadius: '45%',
+            data: [
+                {
+                name: '周口',
+                value: 55
+                },
+                {
+                name: '南阳',
+                value: 120
+                },
+                {
+                name: '西峡',
+                value: 78
+                },
+                {
+                name: '驻马店',
+                value: 66
+                },
+                {
+                name: '新乡',
+                value: 80
+                }
+            ],
+            digitalFlopStyle: {
+                fontSize: 15
+            },
+            showOriginValue: true
+            }
           }
       }
-  }
 }
 </script>
 

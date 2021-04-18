@@ -4,7 +4,8 @@
             <div class="xpanel">
                当前部署完成情况
                 <div class="fill-h" id="flyMap">
-                    <chartpie />
+                    <chartpie style="display:inline"  />
+                    <chartcout style="display:inline" />
                 </div>
             </div>
         </div>
@@ -13,7 +14,6 @@
                 <!-- 世界地图 -->
                 <div class="fill-h" id="worldMap">
                     <chartline />
-                    <chartcout />
                 </div>
             </div>
         </div>

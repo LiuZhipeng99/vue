@@ -11,7 +11,9 @@
         <div class="xpanel-wrapper xpanel-wrapper-3">
             <div class="xpanel">
                 <!-- 城市地图 -->
-                <div class="fill-h" id="cityMap"></div>
+                <div class="fill-h" id="cityMap">
+                    <chartcout />
+                </div>
             </div>
         </div>
         <div class="xpanel-wrapper xpanel-wrapper-3">
@@ -28,10 +30,12 @@
 <script>
 import charthistogram from './chart-histogram'
 import charttable from './chart-table'
+import chartcout from './chart-cout'
 export default {
     components:{
         charttable,
         charthistogram,
+        chartcout,
     }
 }
 </script>
