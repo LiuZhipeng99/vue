@@ -1,5 +1,6 @@
 
 <template>
+
   <div class="container">
     <header class="header">
       <h3>SFC可视化界面</h3>
@@ -71,8 +72,8 @@
 
 
 
-
   }
+  // }
 </script>
 <style scoped>
   .header {
@@ -118,5 +119,3 @@
   ::-webkit-scrollbar-thumb {border-radius:5px;background-color:rgba(0, 0, 0, 0.3);}
 
 </style>
-
-

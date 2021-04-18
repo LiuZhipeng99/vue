@@ -3,7 +3,9 @@
         <div class="xpanel-wrapper xpanel-wrapper-3">
             <div class="xpanel">
                 <!-- 省份地图 -->
-                <div class="fill-h" id="provinceMap"></div>
+                <div class="fill-h" id="provinceMap">
+                    <charthistogram />
+                </div>
             </div>
         </div>
         <div class="xpanel-wrapper xpanel-wrapper-3">
@@ -15,15 +17,22 @@
         <div class="xpanel-wrapper xpanel-wrapper-3">
             <div class="xpanel">
                 <!-- 区县地图 -->
-                <div class="fill-h" id="countyMap"></div>
+                <div class="fill-h" id="countyMap">
+                    <charttable />
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import charthistogram from './chart-histogram'
+import charttable from './chart-table'
 export default {
-
+    components:{
+        charttable,
+        charthistogram,
+    }
 }
 </script>
 

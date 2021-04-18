@@ -3,22 +3,35 @@
         <div class="xpanel-wrapper xpanel-wrapper-2">
             <div class="xpanel">
                当前部署完成情况
-                <div class="fill-h" id="flyMap"></div>
+                <div class="fill-h" id="flyMap">
+                    <chartpie />
+                </div>
             </div>
         </div>
         <div class="xpanel-wrapper xpanel-wrapper-2">
             <div class="xpanel">
                 <!-- 世界地图 -->
-                <div class="fill-h" id="worldMap"></div>
+                <div class="fill-h" id="worldMap">
+                    <chartline />
+                    <chartcout />
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import chartline from "./chart-line"
+import chartpie from "./chart-pie"
+import chartcout from "./chart-cout"
 export default {
-
+    components:{
+      chartline,
+      chartpie,
+      chartcout,
+    },
 }
+
 </script>
 
 <style scoped>
