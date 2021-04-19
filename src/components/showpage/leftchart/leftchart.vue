@@ -1,5 +1,13 @@
 <template>
     <div class="col-lg-3 fill-h">
+        <div class="xpanel-wrapper xpanel-wrapper-22">
+            <div class="xpanel">
+
+                <div class="fill-h" id="worldMap">
+                    <charttable/>
+                </div>
+            </div>
+        </div>
         <div class="xpanel-wrapper xpanel-wrapper-21">
             <div class="xpanel">
                当前部署完成情况
@@ -8,27 +16,17 @@
                 </div>
             </div>
         </div>
-        <div class="xpanel-wrapper xpanel-wrapper-22">
-            <div class="xpanel">
-
-                <div class="fill-h" id="worldMap">
-                    <chartline />
-                    <chartcout />
-                </div>
-            </div>
-        </div>
     </div>
 </template>
 
 <script>
-import chartline from "./leftchart/chart-line"
-import chartpie from "./leftchart/chart-pie"
-import chartcout from "./chart-cout"
+import charttable from "./chart-table"
+import chartpie from "./chart-pie"
+
 export default {
     components:{
-      chartline,
+        charttable,
       chartpie,
-      chartcout,
     },
 }
 
@@ -44,7 +42,7 @@ export default {
         padding: 15px;
         height: 100%;
         min-height: 170px;
-        background: url("../../assets/panel.png") center no-repeat;
+        background: url("../../../assets/panel.png") center no-repeat;
         background-size: 100% 100%;
         box-sizing: border-box;
         text-align: center;

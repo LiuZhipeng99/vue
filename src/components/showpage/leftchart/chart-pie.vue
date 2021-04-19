@@ -19,8 +19,7 @@ export default {
   },
     data(){
       return{
-          // success:0,
-          // count:0
+
       }
   },
     async mounted() {
@@ -42,11 +41,11 @@ export default {
         //     }
         // },
         result_success(){
-            console.log('success:'+this.$store.state.data_result.success)
+            // console.log('success:'+this.$store.state.data_result.success)
             return this.$store.state.data_result.success
         },
         result_fails(){
-            console.log('fail:'+this.$store.state.data_result.fails)
+            // console.log('fail:'+this.$store.state.data_result.fails)
             return this.$store.state.data_result.fails
         },
         chartData () {
@@ -54,7 +53,6 @@ export default {
             var rows=[
                 {"部署情况": "成功", "数量":this.result_success},
                 {"部署情况": "失败", "数量":this.result_fails},
-                {"部署情况": "正在部署", "数量":4000-this.result_success-this.result_fails},
             ]
             var chartData={columns,rows}
             return chartData

@@ -25,9 +25,9 @@
   // require('echarts/lib/component/tooltip')
   // require('echarts/lib/component/title')
   // import center_chart from "./showpage/center_chart";
-  import centerchart from "./showpage/centerchart";
-  import leftchart from "./showpage/leftchart";
-  import rightchart from "./showpage/rightchart";
+  import centerchart from "./showpage/centerchart/centerchart";
+  import leftchart from "./showpage/leftchart/leftchart";
+  import rightchart from "./showpage/rightchart/rightchart";
   export default {
     data(){
       return{
@@ -72,18 +72,7 @@
   .container-fluid {height:100%;min-height:100%;}
   .row {margin-left:-7px;margin-right:-8px;}
   .row>div {padding-left:7px;padding-right:8px;}
-  .xpanel-wrapper {padding-bottom:15px;box-sizing:border-box;}
-  .xpanel-wrapper-1 {height:100%;}
-  .xpanel-wrapper-2 {height:50%;}
-  .xpanel-wrapper-3 {height:33.33333%;}
-  .xpanel {
-    padding:15px;
-    height:100%;
-    min-height:170px;
-    background:url("../assets/panel.png") center no-repeat;
-    background-size:100% 100%;
-    box-sizing:border-box;
-  }
+
 
   /* tool */
   .fill-h {height:100%;min-height:100%;}

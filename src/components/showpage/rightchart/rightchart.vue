@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import charthistogram from './rightchart/chart-histogram'
+import charthistogram from './chart-histogram'
 export default {
     components:{
         charthistogram,
@@ -28,7 +28,7 @@ export default {
         padding:15px;
         height:100%;
         min-height:170px;
-        background:url("../../assets/panel.png") center no-repeat;
+        background:url("../../../assets/panel.png") center no-repeat;
         background-size:100% 100%;
         box-sizing:border-box;
     }
