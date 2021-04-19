@@ -1,34 +1,21 @@
 <template>
     <div class="col-lg-3 fill-h">
-        <div class="xpanel-wrapper xpanel-wrapper-3">
+        <div class="xpanel-wrapper xpanel-wrapper-31">
             <div class="xpanel">
                 <div class="fill-h" id="provinceMap">
                     <charthistogram />
                 </div>
             </div>
         </div>
-        <div class="xpanel-wrapper xpanel-wrapper-3">
-            <div class="xpanel">
-                <div class="fill-h" id="cityMap"></div>
-            </div>
-        </div>
-        <div class="xpanel-wrapper xpanel-wrapper-3">
-            <div class="xpanel">
 
-                <div class="fill-h" id="countyMap">
-                    <charttable />
-                </div>
-            </div>
-        </div>
+
     </div>
 </template>
 
 <script>
-import charthistogram from './chart-histogram'
-import charttable from './chart-table'
+import charthistogram from './rightchart/chart-histogram'
 export default {
     components:{
-        charttable,
         charthistogram,
     }
 }
@@ -45,5 +32,5 @@ export default {
         background-size:100% 100%;
         box-sizing:border-box;
     }
-    .xpanel-wrapper-2 {height:50%;}
+    .xpanel-wrapper-31  {height:100%;}
 </style>

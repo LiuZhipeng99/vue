@@ -25,7 +25,7 @@ export default {
 
 <style scoped>
 .button-row{
-  margin-left: 230px;
+  text-align: center;
   margin-top: 60px;
 }
 </style>

@@ -11,22 +11,22 @@
      <div class="option bottomoption">
       底层网络配置
        <div class="divider"></div>
-       <bottom :isbotmore="isbotmore" ref="form_bottom"/>
-       <el-button type="primary" round class="btn_foot" @click="showbotmore" >{{showinfobot}}</el-button>
+       <bottom  ref="form_bottom"/>
+       <el-button type="primary" round class="btn_foot" @click="showbotmore" >{{showmoreinfo}}</el-button>
 
      </div>
       <div class="option requestoption" >
         SFC请求配置
         <div class="divider"></div>
-      <request :isreqmore="isreqmore" ref="form_request"/>
-        <el-button type="primary" round class="btn_foot" @click="showreqmore" >{{showinforeq}}</el-button>
+      <request ref="form_request"/>
+        <el-button type="primary" round class="btn_foot" @click="showreqmore" >{{showmoreinfo}}</el-button>
       </div>
 
       <div class="option modeloption" >
         模型参数设置
         <div class="divider"></div>
-       <model :ismodmore="ismodmore" ref="form_model"/>
-        <el-button type="primary" round class="btn_foot" @click="showmodmore" >{{showinfomod}}</el-button>
+       <model ref="form_model"/>
+        <el-button type="primary" round class="btn_foot" @click="showmodmore" >{{showmoreinfo}}</el-button>
       </div>
 
 
@@ -44,13 +44,7 @@ import request from './trainpage/request'
   export default {
     data(){
       return{
-        isbotmore:false,
-        isreqmore:false,
-        ismodmore:false,
-        showinfobot:"显示更多",
-        showinforeq:"显示更多",
-        showinfomod:"显示更多"
-
+        showmoreinfo:"更多配置",
       }
     },
     components:{
@@ -58,22 +52,16 @@ import request from './trainpage/request'
     },
     methods:{
       showbotmore(){
-        this.isbotmore=!this.isbotmore
-        if (this.isbotmore){
-          this.showinfobot="隐藏显示"
-        }
+        this.$refs.form_bottom.isbotshow=true
+
       },
       showreqmore(){
-        this.isreqmore=!this.isreqmore
-        if (this.isreqmore){
-          this.showinforeq="隐藏显示"
-        }
+          this.$refs.form_request.isreqshow=true
+
+
       },
       showmodmore(){
-        this.ismodmore=!this.ismodmore
-        if (this.ismodmore){
-          this.showinfomod="隐藏显示"
-        }
+          this.$refs.form_model.ismodshow=true
       },
       trainbegin(){
         let form_bot=this.$refs.form_bottom.form_bottom
@@ -82,7 +70,6 @@ import request from './trainpage/request'
         console.log(form_bot)
         console.log(form_req)
         console.log(form_mod)
-
       }
 
     }
@@ -109,8 +96,8 @@ import request from './trainpage/request'
     width: calc((100% / 3 - 50px));
     height: 100%;
     margin-right: 50px;
-    border-radius: 24px;
-    border: 2px solid #3a8ee6;
+    border-radius: 10px;
+    border: 1px solid #3a8ee6;
     text-align: center;
     font-size: 30px;
     /*margin-bottom: 10px;*/

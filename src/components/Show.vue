@@ -3,7 +3,7 @@
 
   <div class="container">
     <header class="header">
-      <h3>SFC可视化界面</h3>
+      <h3>SFC实时可视化界面</h3>
     </header>
     <div class="wrapper">
       <div class="container-fluid">
@@ -28,9 +28,6 @@
   import centerchart from "./showpage/centerchart";
   import leftchart from "./showpage/leftchart";
   import rightchart from "./showpage/rightchart";
-
-
-
   export default {
     data(){
       return{
