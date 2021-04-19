@@ -1,6 +1,6 @@
 <template>
     <div class="col-lg-3 fill-h">
-        <div class="xpanel-wrapper xpanel-wrapper-2">
+        <div class="xpanel-wrapper xpanel-wrapper-21">
             <div class="xpanel">
                当前部署完成情况
                 <div class="fill-h" id="flyMap">
@@ -8,9 +8,9 @@
                 </div>
             </div>
         </div>
-        <div class="xpanel-wrapper xpanel-wrapper-2">
+        <div class="xpanel-wrapper xpanel-wrapper-22">
             <div class="xpanel">
-                <!-- 世界地图 -->
+
                 <div class="fill-h" id="worldMap">
                     <chartline />
                     <chartcout />
@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import chartline from "./chart-line"
-import chartpie from "./chart-pie"
+import chartline from "./leftchart/chart-line"
+import chartpie from "./leftchart/chart-pie"
 import chartcout from "./chart-cout"
 export default {
     components:{
@@ -36,7 +36,9 @@ export default {
 
 <style scoped>
     .xpanel-wrapper {padding-bottom:15px;box-sizing:border-box;}
-    .xpanel-wrapper-2 {height:50%;}
+    .xpanel-wrapper-21 {height:60%;}
+    .xpanel-wrapper-22 {height:40%;}
+
     .fill-h {height:100%;min-height:100%;}
     .xpanel {
         padding: 15px;

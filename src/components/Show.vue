@@ -34,7 +34,6 @@
   export default {
     data(){
       return{
-          deploy_result: '111'
 
       }
     },
@@ -44,31 +43,12 @@
       rightchart,
       leftchart
     },
-    computed:{
-      event_id:function(){  //msg也相同，就没写
-        return this.$store.state.data_result.event_id
-      },
-    },
 
 
-
-    created() {
-      this.$store.dispatch('getdata')
-     // 因为axios请求花费一定时间,而consolo打印时间几块，导致前端显示undefined
-      setTimeout(() => {
-        console.log(this.event_id)  // 有值
-        // console.log(this.$store.state.data_result.event_type)  // 有值
-        // console.log(this.$store.state.data_result.total_cost)  // 有值
-      }, 1000);
-
-    },
     mounted() {
+      this.$store.dispatch('getdata')
     },
 
-    methods: {
-      //post请求向服务器请求数据
-
-    },
 
 
 

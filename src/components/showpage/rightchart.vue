@@ -2,7 +2,6 @@
     <div class="col-lg-3 fill-h">
         <div class="xpanel-wrapper xpanel-wrapper-3">
             <div class="xpanel">
-                <!-- 省份地图 -->
                 <div class="fill-h" id="provinceMap">
                     <charthistogram />
                 </div>
@@ -10,13 +9,12 @@
         </div>
         <div class="xpanel-wrapper xpanel-wrapper-3">
             <div class="xpanel">
-                <!-- 城市地图 -->
                 <div class="fill-h" id="cityMap"></div>
             </div>
         </div>
         <div class="xpanel-wrapper xpanel-wrapper-3">
             <div class="xpanel">
-                <!-- 区县地图 -->
+
                 <div class="fill-h" id="countyMap">
                     <charttable />
                 </div>

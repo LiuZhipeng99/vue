@@ -4,6 +4,11 @@ import axios from 'axios'
 
 Vue.use(Vuex)
 
+//这是休眠函数的封装
+function sleep (time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+}
+
 let store =new Vuex.Store({
     state:{
         data_result:[
@@ -11,7 +16,8 @@ let store =new Vuex.Store({
                 event_id:[],
                 event_type:[],
                 placement_id:[],
-                success:[],
+                success:'',
+                fails:'',
                 inservice:[],
                 total_revenue:[],
                 total_cost:[],
@@ -25,11 +31,12 @@ let store =new Vuex.Store({
         ]
     },
     mutations:{
-       data_resultInit(state,res){
+        async  data_resultInit(state,res){
            // console.log(res.data)   //没问题
-           state.data_result=res.data
-           const length=state.data_result.length
-           const data=state.data_result
+
+           state.data=res.data
+           const length=state.data.length
+
 
            //initArray
            var event_id=new Array(length)
@@ -47,40 +54,53 @@ let store =new Vuex.Store({
            var paths=new Array(length)
 
             //add data to array
-           for(var i=0;i<length;i++){
-               event_id[i]=data[i].event_id
-               event_type[i]=data[i].event_type
-               placement_id[i]=data[i].placement_id
-               success[i]=data[i].success
-               inservice[i]=data[i].inservice
-               total_revenue[i]=data[i].total_revenue
-               total_cost[i]=data[i].total_cost
-               sfc_id[i]=data[i].sfc_id
-               result[i]=data[i].result
-               revenue[i]=data[i].revenue
-               cost[i]=data[i].cost
-               slots[i]=data[i].slots
-               paths[i]=data[i].paths
+           for(var i=0;i<state.data.length;i++){
+               event_id[i]=state.data[i].event_id
+               event_type[i]=state.data[i].event_type
+               placement_id[i]=state.data[i].placement_id
+               success[i]=state.data[i].success
+               inservice[i]=state.data[i].inservice
+               total_revenue[i]=state.data[i].total_revenue
+               total_cost[i]=state.data[i].total_cost
+               sfc_id[i]=state.data[i].sfc_id
+               result[i]=state.data[i].result
+               revenue[i]=state.data[i].revenue
+               cost[i]=state.data[i].cost
+               slots[i]=state.data[i].slots
+               paths[i]=state.data[i].paths
            }
 
+
            //copy to data
-           data.event_id=event_id
-           data.event_type=event_type
-           data.placement_id=placement_id
-           data.success=success
-           data.inservice=inservice
-           data.total_revenue=total_revenue
-           data.total_cost=total_cost
-           data.sfc_id=sfc_id
-           data.result=result
-           data.revenue=revenue
-           data.cost=cost
-           data.slots=slots
-           data.paths=paths
-           // console.log(data.event_id)
-
-
-
+            state.data_result.event_id=event_id
+            state.data_result.event_type=event_type
+            state.data_result.placement_id=placement_id
+            state.data_result.fails=0
+           for(var j=0;j<state.data.length;j++)
+           {
+               // console.log('qwq')
+               state.data_result.success=success[j]
+               if(j>0) {
+                   if (state.data_result.success == success[j - 1]){
+                       state.data_result.fails+=1
+                   }
+                       }
+               //这样写data_result.success地址不会改变，无法被监听
+               await sleep(5)    //实现异步更新data_result.success
+               //为了让watch监听对象
+               let address=Object.assign({},state.data_result,state.data_result)
+               state.data_result=address
+               // console.log(state.data_result.success)
+           }
+            state.data_result.inservice=inservice
+            state.data_result.total_revenue=total_revenue
+            state.data_result.total_cost=total_cost
+            state. data_result.sfc_id=sfc_id
+            state. data_result.result=result
+            state.data_result.revenue=revenue
+            state.data_result.cost=cost
+            state. data_result.slots=slots
+            state.data_result.paths=paths
 
        }
 
@@ -98,13 +118,14 @@ let store =new Vuex.Store({
                   headers: {
                       'Content-Type': 'application/json'
                   }
-              }).then((res)=>{context.commit('data_resultInit',res)
+              }).then((res)=>{  context.commit('data_resultInit',res)
               })
             .catch(function (error) {
                 console.log(error);
             });
 
-    }
+    },
+
 }
     })
 export default store
