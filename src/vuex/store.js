@@ -16,7 +16,7 @@ let store =new Vuex.Store({
                 event_id:[],
                 event_type:[],
                 placement_id:[],
-                success:'',
+                success:'',   //success累加
                 fails:'',    //result为false，且进入类型为1
                 inservice:[],
                 total_revenue:[],
@@ -27,33 +27,25 @@ let store =new Vuex.Store({
                 cost:[],
                 slots:[],
                 paths:[],
-                //总收益/总cost：
-                porb:[]
+                porb:[], //总收益/总cost：
+                sfc_entertime:[],  //sfc进入的时间与其id
+                sfc_leavetime:[] //sfc离开的时间及其id
             }
         ]
     },
     mutations:{
         async  data_resultInit(state,res){
-           // console.log(res.data)   //没问题
 
            state.data=res.data
            const length=state.data.length
 
-
            //initArray
-           // var event_id=new Array(length)
            var event_type=new Array(length)
-           // var placement_id=new Array(length)
            var success=new Array(length)
-           // var inservice=new Array(length)
            var total_revenue=new Array(length)
            var total_cost=new Array(length)
-           // var sfc_id=new Array(length)
+           var sfc_id=new Array(length)
            var result=new Array(length)
-           // var revenue=new Array(length)
-           // var cost=new Array(length)
-           // var slots=new Array(length)
-           // var paths=new Array(length)
 
             //add data to array
            for(var i=0;i<state.data.length;i++){
@@ -62,6 +54,7 @@ let store =new Vuex.Store({
                total_revenue[i]=state.data[i].total_revenue
                total_cost[i]=state.data[i].total_cost
                result[i]=state.data[i].result
+               sfc_id[i]=state.data[i].sfc_id
            }
 
 
@@ -71,18 +64,32 @@ let store =new Vuex.Store({
             state.data_result.total_cost=[]
             state.data_result.total_revenue=[]
             state.data_result.porb=[]
+            state.data_result.sfc_entertime=[]
+            state.data_result.sfc_leavetime=[]
             for(var j=0;j<state.data.length;j++)
            {
-
                state.data_result.success=success[j]  //初始化success
                if(result[j]=='False'&&event_type[j]==1){    //csv中数据只有两种形式：string和number
-                       state.data_result.fails+=1}
+                   state.data_result.fails+=1}
 
+               //初始化传输完成的sfc_id,确定其进入时间离开时间，以及其离开时间,及其是否部署成功
+               if(event_type[j]==1){
+                   if(result[j]=='False'){
+                   state.data_result.sfc_entertime.push({sfc_id:sfc_id[j],entertime:j+1,is_success:false})}
+                   else state.data_result.sfc_entertime.push({sfc_id:sfc_id[j],entertime:j+1,is_success:true})
+               }
+               if(event_type[j]==0){
+                   state.data_result.sfc_leavetime.push({sfc_id:sfc_id[j],leavetime:j+1})
+               }
+
+
+                //初始化是收益与支出
                state.data_result.total_cost[j]=total_cost[j]
                state.data_result.total_revenue[j]=total_revenue[j]
                state.data_result.porb[j]=(parseFloat(total_revenue[j])/parseFloat(total_cost[j])).toFixed(2)
+
                //这样写data_result.success地址不会改变，无法被监听
-               await sleep(500)    //实现异步更新data_result.success
+               await sleep(250)    //实现异步更新data_result.success
                //为了让watch监听对象
                let address=Object.assign({},state.data_result,state.data_result)
                state.data_result=address

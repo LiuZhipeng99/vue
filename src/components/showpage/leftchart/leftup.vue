@@ -1,7 +1,7 @@
 <template>
   <div class="table-container">
-    <div class="head">部署情况实时预览</div>
-    <el-tag type="info" size="big" class="option info">当前部署总数：{{result_all}}</el-tag>
+    <div class="head"><b>部署情况实时预览</b></div>
+    <el-tag type="info" size="big" class="option info" color="#DEEBF7">当前部署总数：{{result_all}}</el-tag>
     <el-tag type="success" size="big" class="option">部署成功数：{{result_success}}</el-tag>
     <el-tag type="danger" size="big" class="option">部署失败数：{{result_fails}}</el-tag>
     <el-tag type="warning" size="big" class="option">部署成功率：{{result_chance}}</el-tag>
@@ -52,7 +52,9 @@ export default {
   /*}*/
   .head{
     margin-top: -10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: large;
   }
 
 

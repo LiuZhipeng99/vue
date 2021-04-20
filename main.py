@@ -22,6 +22,7 @@ def predict():
         print(flask.request.values.get("request_type"))
         if flask.request.values.get("request_type"):
             print('接受到request参数')
+
             with open('deploy_result.csv', 'r') as f:
                 reader=csv.DictReader(f)
                 for row in reader:

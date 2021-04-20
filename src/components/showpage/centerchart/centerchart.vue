@@ -26,9 +26,10 @@
                 var chartDom = document.getElementById('centerechart');
                 var myChart = echarts.init(chartDom);
                 setInterval(() =>{
+                    if(this.total_cost!=20){
                     this.xAxisData.push(this.xAxisData.length + 1 + 's');  //这里面的this不指向vue对象
                     this.myoption.xAxis.data=this.xAxisData
-                    myChart.setOption(this.myoption);
+                    myChart.setOption(this.myoption);}
                 }, 1000)
                 this.myoption && myChart.setOption(this.myoption);
             }
@@ -38,7 +39,6 @@
             total_cost(){
 
                 if (this.$store.state.data_result.total_cost){
-                    // console.log(this.$store.state.data_result.total_cost.map(Number))
                 return this.$store.state.data_result.total_cost.map(Number)}
                 else return [20]
             },
@@ -72,44 +72,74 @@
                     xAxis: {
                         type: 'category',
                         boundaryGap: false,
-                        data: this.xAxisData
+                        data: this.xAxisData,
+                        splitLine: {
+                            show: false
+                        },
+                        axisTick: {
+                            show: false
+                        },
                     },
                     yAxis: [
                         {type: 'value',
                         name:'左y轴',
-                            position:'left',
-                            axisLine: {
-                                show: false  //不显示坐标轴轴线
-                            },
                             axisTick: {
-                                show: false  //不显示坐标轴刻度
+                                show: false
                             },
+                            splitLine: {
+                                show: false
+                            }
                         },
                         {type: 'value',
                             name:'右y轴',
-                            position:'right',
-                            axisLabel: {formatter: '{value}'}
+                            axisTick: {
+                                show: false
+                            },
                         },
+
+
                     ],
                     series: [
                         {
                             name: '总收益',
                             type: 'line',
-                            stack: '总量',
+                            itemStyle : {
+                                normal : {
+                                    color:'#67C23A',
+                                    lineStyle:{
+                                        color:'#67C23A'
+                                    }
+                                }
+                            },
                             data: this.total_reven,
                             yAxisIndex:0
                         },
                         {
                             name: '总支出',
                             type: 'line',
-                            stack: '总量',
+
+                            itemStyle : {
+                                normal : {
+                                    color:'#F66C6C',
+                                    lineStyle:{
+                                        color:'#F66C6C'
+                                    }
+                                }
+                            },
                             data: this.total_cost,
                             yAxisIndex:0
                         },
                         {
                             name: '收益率',
                             type: 'line',
-                            stack: '总量',
+                            itemStyle : {
+                                normal : {
+                                    color:'#7CCBFB',
+                                    lineStyle:{
+                                        color:'#7CCBFB'
+                                    }
+                                }
+                            },
                             data: this.total_porb,
                             yAxisIndex:1
                         },
@@ -121,21 +151,14 @@
         },
         watch:{
             total_cost(newVal){
-            //     handler(newVal){
-            //         this.centerechart()
                     return newVal
-            // }
-                // deep:true
-
-            },
-            total_reven(newVal){
-               // handler(newVal){
-                    return newVal
-               //  }
-                // deep:true
                 },
-            myoption(){
-    }
+            total_reven(newVal){
+                    return newVal
+                },
+            myoption(newVal){
+                    return newVal
+                }
         }
 
 
