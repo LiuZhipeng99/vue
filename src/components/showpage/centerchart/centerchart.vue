@@ -9,6 +9,8 @@
 </template>
 
 <script>
+    import '../../../assets/esresize'
+    import {EleResize} from "../../../assets/esresize";
     // import * as echarts from 'echarts'
     let echarts = require('echarts')  //这是基本模版
 
@@ -16,6 +18,9 @@
         data(){
             return{
                 xAxisData:['1s', '2s', '3s', '4s', '5s', '6s', '7s'],
+                reven:[],
+                cost:[],
+                porb:[]
             }
         },
          mounted() {
@@ -26,31 +31,43 @@
                 var chartDom = document.getElementById('centerechart');
                 var myChart = echarts.init(chartDom);
                 setInterval(() =>{
-                    if(this.total_cost!=20){
-                    this.xAxisData.push(this.xAxisData.length + 1 + 's');  //这里面的this不指向vue对象
-                    this.myoption.xAxis.data=this.xAxisData
-                    myChart.setOption(this.myoption);}
+                    if(this.total_cost!=0){
+                        this.xAxisData.push(this.xAxisData.length + 1 + 's');  //这里面的this不指向vue对象
+                        this.myoption.xAxis.data=this.xAxisData
+                        this.myoption.series[0].data=this.reven.push(this.total_reven)
+                        console.log(this.reven)
+                        this.myoption.series[1].data=this.cost.push(this.total_cost)
+                        this.myoption.series[2].data=this.porb.push(this.total_porb)
+                        myChart.setOption(this.myoption);}
                 }, 1000)
                 this.myoption && myChart.setOption(this.myoption);
+                let listener=function () {
+                    myChart.resize()
+                }
+                EleResize.on(document.getElementById('centerechart'),listener)
             }
 
     },
         computed:{
-            total_cost(){
 
+            total_cost(){
                 if (this.$store.state.data_result.total_cost){
-                return this.$store.state.data_result.total_cost.map(Number)}
-                else return [20]
+                    let cost_length=this.$store.state.data_result.total_cost.length-1
+                    return this.$store.state.data_result.total_cost[cost_length-1]} //获取最新的totalcost
+                else return [0]
             },
             total_reven(){
                 if (this.$store.state.data_result.total_revenue){
-                return this.$store.state.data_result.total_revenue.map(Number)}
-                else return [20]
+                    let reven_length=this.$store.state.data_result.total_revenue.length-1
+                    // console.log(this.$store.state.data_result.total_revenue[reven_length-1])
+                    return this.$store.state.data_result.total_revenue[reven_length-1]}
+                else return [0]
             },
             total_porb(){
                 if (this.$store.state.data_result.porb){
-                    return this.$store.state.data_result.porb}
-                else return [0.1]
+                    let reven_length=this.$store.state.data_result.porb.length-1
+                    return this.$store.state.data_result.porb[reven_length-1].toFixed(2)}
+                else return [0]
             },
             myoption(){   //把option设为计算属性！！！
                 let myoption= {
@@ -111,13 +128,14 @@
                                     }
                                 }
                             },
-                            data: this.total_reven,
+                            data: this.reven,
+                            smooth: true,
                             yAxisIndex:0
                         },
                         {
                             name: '总支出',
                             type: 'line',
-
+                            smooth: true,
                             itemStyle : {
                                 normal : {
                                     color:'#F66C6C',
@@ -126,7 +144,7 @@
                                     }
                                 }
                             },
-                            data: this.total_cost,
+                            data: this.cost,
                             yAxisIndex:0
                         },
                         {
@@ -140,7 +158,8 @@
                                     }
                                 }
                             },
-                            data: this.total_porb,
+                            data: this.porb,
+                            smooth: true,
                             yAxisIndex:1
                         },
 

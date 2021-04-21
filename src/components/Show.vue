@@ -46,7 +46,9 @@
       this.$store.dispatch('getdata')
     },
 
+    methods:{
 
+    }
 
 
   }
@@ -77,8 +79,13 @@
   /* tool */
   .fill-h {height:100%;min-height:100%;}
   .no-margin {margin:0 !important;}
-  .no-padding {padding:0 !important;}
-
+  .no-padding {padding:0 ;}
+  .container{
+    margin:0   !important;
+    padding: 0 !important;
+    max-width:1920px;
+    max-height: 1280px;
+  }
   /* scrollbar */
   ::-webkit-scrollbar {width:0;height:0;}
   ::-webkit-scrollbar-track {background-color:transparent;}

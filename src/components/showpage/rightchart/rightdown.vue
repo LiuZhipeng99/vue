@@ -1,6 +1,7 @@
 <template>
     <div class="xpanel-wrapper xpanel-wrapper-32">
         <div class="xpanel">
+            <div class="head"><b>部署实时收益率</b></div>
             <div class="fill-h" id="rightdown">
             </div>
         </div>
@@ -9,6 +10,9 @@
 
 <script>
     import * as echarts from 'echarts';
+    import {EleResize} from "../../../assets/esresize";
+
+
 export default {
 
     mounted() {
@@ -20,8 +24,12 @@ export default {
             var myChart = echarts.init(chartDom);
             setInterval(() =>{
                 myChart.setOption(this.myoption);
-            }, 1000)   //核心代码每隔1000ms,更新option
+            }, 500)   //核心代码每隔1000ms,更新option
             this.myoption && myChart.setOption(this.myoption);
+            let listener=function () {
+                myChart.resize()
+            }
+            EleResize.on(document.getElementById('rightdown'),listener)
         }
     },
     computed:{
@@ -32,17 +40,15 @@ export default {
         },
         total_porb(){
             if (this.$store.state.data_result.porb){
-                return this.$store.state.data_result.porb[this.total_porb_length]*100}
+                return ((this.$store.state.data_result.porb[this.total_porb_length-1]*100).toFixed(2))}
             else return [1]
         },
 
         myoption(){
             var myoption = {
-                title: {
-                    text: '部署实时收益率'
-                },
                 series: [{
                     type: 'gauge',
+                    radius: "85%",
                     axisLine: {
                         lineStyle: {
                             width: 30,
@@ -68,7 +74,7 @@ export default {
                     },
                     splitLine: {
                         distance: -30,
-                        length: 30,
+                        length: 25,
                         lineStyle: {
                             color: '#fff',
                             width: 4
@@ -77,17 +83,20 @@ export default {
                     axisLabel: {
                         color: 'auto',
                         distance: 10,
-                        fontSize: 15
+                        fontSize: 12
                     },
                     detail: {
                         valueAnimation: true,
                         formatter: '{value} %',
                         color: 'auto',
-                        fontSize: 15
+                        fontSize: 15,
+                        distance:-20
                     },
                     data: [{
                         value: this.total_porb
-                    }]
+                    }],
+                    min:parseInt(this.total_porb/10)*10,
+                    max:parseInt(this.total_porb/10)*10+10,
                 }]
             };
             return myoption
@@ -118,5 +127,11 @@ export default {
         background:url("../../../assets/panel.png") center no-repeat;
         background-size:100% 100%;
         box-sizing:border-box;
+    }
+    #rightdown{
+    }
+    .head{
+        text-align: left;
+        font-size: large;
     }
 </style>

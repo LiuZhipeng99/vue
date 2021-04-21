@@ -13,6 +13,7 @@
 //     return new Promise((resolve) => setTimeout(resolve, time));
 // }
 import * as echarts from 'echarts';
+import {EleResize} from "../../../assets/esresize";
 export default {
     //  :data-empty="true"
     data(){
@@ -32,7 +33,12 @@ export default {
             setInterval(() =>{
                 myChart.setOption(this.myoption);
             }, 1000)   //核心代码每隔1000ms,更新option
-        this.myoption && myChart.setOption(this.myoption);}
+        this.myoption && myChart.setOption(this.myoption);
+            let listener=function () {
+                myChart.resize()
+            }
+            EleResize.on(document.getElementById('leftdown'),listener)
+        }
 
     },
 
@@ -65,7 +71,7 @@ export default {
                     {
                         name: '部署情况',
                         type: 'pie',
-                        radius: '50%',
+                        radius: '70%',
                         data: [
                             {value: this.result_success, name: '成功'},
                             {value: this.result_fails, name: '失败'},

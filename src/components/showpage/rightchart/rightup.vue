@@ -1,10 +1,11 @@
 <template>
     <div class="xpanel-wrapper xpanel-wrapper-31">
         <div class="xpanel" >
+            <div class="head"><b>部署结果表</b></div>
             <el-table
                     :data="this.tableData"
                     style="width: 100% "
-                    max-height="320"
+                    max-height="290"
                     :row-class-name="tableRowClassName"
             >
                 <el-table-column
@@ -175,5 +176,9 @@ export default {
     .el-table .success-row {
         background: #F0F9EB;
     }
+    .head{
 
+        text-align: left;
+        font-size: large;
+    }
 </style>

@@ -27,9 +27,7 @@ export default {
 
 <style scoped>
     .xpanel-wrapper {padding-bottom:15px;box-sizing:border-box;}
-    .xpanel-wrapper-22 {height:60%;}
     .xpanel-wrapper-21 {height:40%;}
-
     .fill-h {height:100%;min-height:100%;}
     .xpanel {
         padding: 15px;

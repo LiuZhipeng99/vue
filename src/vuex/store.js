@@ -86,7 +86,7 @@ let store =new Vuex.Store({
                 //初始化是收益与支出
                state.data_result.total_cost[j]=total_cost[j]
                state.data_result.total_revenue[j]=total_revenue[j]
-               state.data_result.porb[j]=(parseFloat(total_revenue[j])/parseFloat(total_cost[j])).toFixed(2)
+               state.data_result.porb[j]=(parseFloat(total_revenue[j])/parseFloat(total_cost[j]))
 
                //这样写data_result.success地址不会改变，无法被监听
                await sleep(250)    //实现异步更新data_result.success

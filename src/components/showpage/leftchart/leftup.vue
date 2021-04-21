@@ -1,6 +1,6 @@
 <template>
-  <div class="table-container">
-    <div class="head"><b>部署情况实时预览</b></div>
+  <div class="table-container" >
+    <div class="head" id="leftup"><b>部署情况实时预览</b></div>
     <el-tag type="info" size="big" class="option info" color="#DEEBF7">当前部署总数：{{result_all}}</el-tag>
     <el-tag type="success" size="big" class="option">部署成功数：{{result_success}}</el-tag>
     <el-tag type="danger" size="big" class="option">部署失败数：{{result_fails}}</el-tag>
@@ -12,22 +12,24 @@
 <script>
 
 
+  import {EleResize} from "../../../assets/esresize";
 
-export default {
+  export default {
 
   data() {
     return {
 
       }
   },
+  mounted() {
+
+  },
   computed:{
     result_success(){
-      let result_success=parseInt(this.$store.state.data_result.success)
-      return result_success
+      return parseInt(this.$store.state.data_result.success)
     },
     result_fails(){
-      let result_fails=parseInt(this.$store.state.data_result.fails)
-      return result_fails
+      return parseInt(this.$store.state.data_result.fails)
     },
     result_all(){
       return this.result_success+this.result_fails
@@ -40,10 +42,11 @@ export default {
   }
 };
 </script>
+
 <style scoped>
 .option{
   font-size: large;
-  width: 300px;
+  width: 70%;
   margin-bottom: 15px;
   text-align: center;
 }
