@@ -3,7 +3,7 @@
 
   <div class="container">
     <header class="header">
-      <h3>SFC可视化界面</h3>
+      <h3>SFC实时可视化界面</h3>
     </header>
     <div class="wrapper">
       <div class="container-fluid">
@@ -25,16 +25,12 @@
   // require('echarts/lib/component/tooltip')
   // require('echarts/lib/component/title')
   // import center_chart from "./showpage/center_chart";
-  import centerchart from "./showpage/centerchart";
-  import leftchart from "./showpage/leftchart";
-  import rightchart from "./showpage/rightchart";
-
-
-
+  import centerchart from "./showpage/centerchart/centerchart";
+  import leftchart from "./showpage/leftchart/leftchart";
+  import rightchart from "./showpage/rightchart/rightchart";
   export default {
     data(){
       return{
-          deploy_result: '111'
 
       }
     },
@@ -44,32 +40,15 @@
       rightchart,
       leftchart
     },
-    computed:{
-      event_id:function(){  //msg也相同，就没写
-        return this.$store.state.data_result.event_id
-      },
-    },
 
 
-
-    created() {
-      this.$store.dispatch('getdata')
-     // 因为axios请求花费一定时间
-      setTimeout(() => {
-        console.log(this.event_id)  // 有值
-        console.log(this.$store.state.data_result.event_type)  // 有值
-
-      }, 1000);
-
-    },
     mounted() {
+      this.$store.dispatch('getdata')
     },
 
-    methods: {
-      //post请求向服务器请求数据
+    methods:{
 
-    },
-
+    }
 
 
   }
@@ -95,24 +74,18 @@
   .container-fluid {height:100%;min-height:100%;}
   .row {margin-left:-7px;margin-right:-8px;}
   .row>div {padding-left:7px;padding-right:8px;}
-  .xpanel-wrapper {padding-bottom:15px;box-sizing:border-box;}
-  .xpanel-wrapper-1 {height:100%;}
-  .xpanel-wrapper-2 {height:50%;}
-  .xpanel-wrapper-3 {height:33.33333%;}
-  .xpanel {
-    padding:15px;
-    height:100%;
-    min-height:170px;
-    background:url("../assets/panel.png") center no-repeat;
-    background-size:100% 100%;
-    box-sizing:border-box;
-  }
+
 
   /* tool */
   .fill-h {height:100%;min-height:100%;}
   .no-margin {margin:0 !important;}
-  .no-padding {padding:0 !important;}
-
+  .no-padding {padding:0 ;}
+  .container{
+    margin:0   !important;
+    padding: 0 !important;
+    max-width:1920px;
+    max-height: 1280px;
+  }
   /* scrollbar */
   ::-webkit-scrollbar {width:0;height:0;}
   ::-webkit-scrollbar-track {background-color:transparent;}

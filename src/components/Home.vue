@@ -1,30 +1,31 @@
 <template>
   <div class="container">
-    <div class="containervertical">
+
       <div class="text-center">
         <h2 class="tm-section-title mb-4">SFC网络资源部署首页</h2>
         <p class="titleText">
           上传或部署资源部署文件
         </p><br>
       </div>
-      <div class="row">
-        <div class="upload">
-        <upload/>
-        </div>
-        <span style="margin-left: 50px"></span>
-        <div class="demo-input-suffix">
+      <div class="row justify-content-center ">
+          <div class="col-3 upload ">
+              <upload/>
+          </div>
+          <div class="col-2"></div>
+        <div class="col-3 demo-input-sfc ">
           <span>模拟SFC请求 </span><br>
           <option1 class="option1"/>
           <el-button type="primary" round class="btn_foot" @click="getform">生成数据</el-button>
           <el-button type="primary" round class="btn_foot" @click="optshow">{{textshow}}</el-button>
+          <moreoption :isoptshow.sync="isoptshow" ref="form_more"/>
         </div>
 
       </div> <!--      row-->
-      <div class="button-row">
-        <buttonrow/>
-      </div>
-    </div>
-    <moreoption :isoptshow="isoptshow" ref="form_more"/>
+
+       <buttonrow/>
+
+
+
   </div>
 
 
@@ -48,15 +49,7 @@ export default {
   },
   methods:{
     optshow(){
-      console.log(this.isoptshow)
-      this.isoptshow=!this.isoptshow
-      if(this.isoptshow==true) {
-        this.textshow='隐藏数据'
-
-      }
-      if(this.isoptshow==false) {
-        this.textshow='更多数据'
-      }
+     this.$refs.form_more.dialogshow=true
     },
     getform(){
       let form_info=this.$refs.form_more.form_more
@@ -74,36 +67,23 @@ export default {
     margin-top: 50px;
   }
 
-  .containervertical{
-    /* float: left; */
-    display: inline-block;
-  }
 
-  .text-center{
-    margin-left: 250px;
-  }
 
   /*row*/
   .upload{
-    float: left;
-    position: relative;
-    margin-left: 150px;
+/*display: inline-block;*/
   }
-  .demo-input-suffix{
+  .demo-input-sfc{
     text-align: center;
-    height: 270px;
+    /*height: 270px;*/
     margin-top: -5px;
+    /*display: inline-block;*/
+    margin-right: 20px;
   }
 
  .option1{
     margin-top: 5px;
   }
 
-
-
-.button-row{
-  margin-left: 150px;
-  margin-top: 50px;
-}
 
 </style>
