@@ -3,19 +3,19 @@
   <el-form ref="form" :model="form_request" label-width="80px" size="mini" class="request">
     <el-form-item label="奖励折扣率" label-width="130px">
       <el-col :span="18">
-        <el-input v-model="form_request.num_sfcs" placeholder="最小2 最大15"></el-input>
+        <el-input-number v-model="form_request.num_sfcs" placeholder="最小2 最大15" :step="0.1" :max="10"></el-input-number>
       </el-col>
     </el-form-item>
 
-    <el-form-item label="min_length" label-width="130px">
+    <el-form-item label="最小长度" label-width="130px">
       <el-col :span="18">
-        <el-input v-model="form_request.min_length" placeholder="最小2 最大15"></el-input>
+        <el-input-number v-model="form_request.min_length" placeholder="最小2 最大15"></el-input-number>
       </el-col>
     </el-form-item>
 
-    <el-form-item label="max_length" label-width="130px">
+    <el-form-item label="最大长度" label-width="130px">
     <el-col :span="18">
-      <el-input v-model="form_request.max_length" placeholder="最小2 最大15"></el-input>
+      <el-input-number v-model="form_request.max_length" placeholder="最小2 最大15"></el-input-number>
     </el-col>
   </el-form-item>
   </el-form>

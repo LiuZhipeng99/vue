@@ -8,26 +8,28 @@
       </div>
 
     <div class="row">
-     <div class="option bottomoption">
+     <el-card class="box-card option bottomoption">
       底层网络配置
        <div class="divider"></div>
        <bottom  ref="form_bottom"/>
        <el-button type="primary" round class="btn_foot" @click="showbotmore" >{{showmoreinfo}}</el-button>
 
-     </div>
-      <div class="option requestoption" >
+     </el-card>
+     <el-card class="box-card option requestoption">
+
         SFC请求配置
         <div class="divider"></div>
       <request ref="form_request"/>
         <el-button type="primary" round class="btn_foot" @click="showreqmore" >{{showmoreinfo}}</el-button>
-      </div>
+     </el-card>
 
-      <div class="option modeloption" >
+    <el-card class="box-card option modeloption">
+
         模型参数设置
         <div class="divider"></div>
        <model ref="form_model"/>
         <el-button type="primary" round class="btn_foot" @click="showmodmore" >{{showmoreinfo}}</el-button>
-      </div>
+    </el-card>
 
 
     </div>
@@ -70,6 +72,10 @@ import request from './trainpage/request'
         console.log(form_bot)
         console.log(form_req)
         console.log(form_mod)
+        this.$message({
+          message: '未配置的参数会使用默认参数',
+          type: 'warning'
+        });
       }
 
     }

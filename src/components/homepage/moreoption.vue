@@ -3,34 +3,34 @@
     <el-dialog title="SFC模拟参数" :visible.sync="dialogshow" :center=center>
   <el-form ref="form_more" :model="form_more " label-width="150px" size="mini" >
       <div class="left-form" >
-    <el-form-item label="num_sfcs">
+    <el-form-item label="SFC请求数量">
       <el-input v-model="form_more.num_sfcs" placeholder="默认100"></el-input>
     </el-form-item>
-    <el-form-item label="min_length">
+    <el-form-item label="SFC最小长度">
       <el-input v-model="form_more.min_length" placeholder="默认0.2"></el-input>
     </el-form-item>
-    <el-form-item label="max_length">
+    <el-form-item label="SFC最大长度">
       <el-input v-model="form_more.max_length" placeholder="默认0.5"></el-input>
     </el-form-item>
-    <el-form-item label="min_node_request">
+    <el-form-item label="节点最小资源请求">
       <el-input v-model="form_more.min_node_request" placeholder="默认50"></el-input>
     </el-form-item>
-        <el-form-item label="max_node_request" >
+        <el-form-item label="节点最大资源请求" >
           <el-input v-model="form_more.max_node_request" placeholder="默认100"></el-input>
         </el-form-item>
       </div>
       <div class="right-form">
 
-      <el-form-item label="min_edge_request">
+      <el-form-item label="链路最小资源请求">
       <el-input v-model="form_more.min_edge_request" placeholder="默认50"></el-input>
     </el-form-item>
-    <el-form-item label="max_edge_request">
+    <el-form-item label="链路最大资源请求">
       <el-input v-model="form_more.max_edge_request" placeholder="默认100"></el-input>
     </el-form-item>
-    <el-form-item label="aver_lifetime ">
+    <el-form-item label="SFC平均生存时间 ">
       <el-input v-model="form_more.aver_lifetime" placeholder="默认400"></el-input>
     </el-form-item>
-    <el-form-item label="aver_arrival_rate ">
+    <el-form-item label="SFC平均到达速率">
       <el-input v-model="form_more.aver_arrival_rate" placeholder="默认20"></el-input>
     </el-form-item>
       </div>
@@ -76,7 +76,10 @@ export default {
          },
         confirmed(){
             this.dialogshow=false
-
+          this.$message({
+          message: 'SFC已配置',
+          type: 'success'
+        });
         }
 
 

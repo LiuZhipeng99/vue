@@ -16,6 +16,11 @@ export default {
     gotrain(){
       // let url=window.location.href;
       // window.location.href=url+"/train.html"
+    this.$notify({
+          title: '训练模型',
+          message: '请配置训练参数',
+          type: 'success'
+        });
       this.$router.push('/train')
     }
   }

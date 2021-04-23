@@ -2,9 +2,10 @@
 
   <div class="=bottom_container">
       <el-form ref="form_bottom" :model="form_bottom" label-width="80px" size="mini" class="form" >
-        <el-form-item label="底层网络节点个数" label-width="130px">
+        <el-form-item label="底层网络节点个数" label-width="130px" 
+>
           <el-col :span="18">
-          <el-input v-model="form_bottom.pn_num_nodes" placeholder="最小2 最大15"></el-input>
+          <el-input-number v-model="form_bottom.pn_num_nodes" placeholder="最小2 最大15"></el-input-number>
           </el-col>
         </el-form-item>
 
@@ -24,9 +25,12 @@
 
     <el-dialog title="底层网络参数配置" :visible.sync="isbotshow" :center=center width="400px">
       <el-form ref="form_bottom" :model="form_bottom" label-width="80px" size="mini" class="form" >
-      <el-form-item label="节点最小资源请求"  label-width="130px">
+      <el-form-item label="节点最小资源请求"  label-width="130px" :rules="[
+      { required: true, message: '不能为空'},
+      { type: 'number', message: '必须为数字值'}
+    ]">
           <el-col :span="18">
-            <el-input  v-model="form_bottom.min_node_capacity" placeholder="最小2 最大15"></el-input>
+            <el-input  v-model.number="form_bottom.min_node_capacity" placeholder="最小2 最大15"></el-input>
           </el-col>
         </el-form-item>
 
@@ -81,7 +85,13 @@ export default {
       this.isbotshow=false
     },
     confirmed(){
+            this.$message({
+          message: '底层网络已配置',
+          type: 'success'
+        });
       this.isbotshow=false
+
+
     }}
 
 }

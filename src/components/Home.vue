@@ -11,7 +11,9 @@
           <div class="col-3 upload ">
               <upload/>
           </div>
-          <div class="col-2"></div>
+          <div class="col-2">
+            <h1 >或</h1>
+          </div>
         <div class="col-3 demo-input-sfc ">
           <span>模拟SFC请求 </span><br>
           <option1 class="option1"/>
@@ -52,6 +54,10 @@ export default {
      this.$refs.form_more.dialogshow=true
     },
     getform(){
+      this.$message({
+          message: '生成预置SFC请求',
+          type: 'success'
+        });
       let form_info=this.$refs.form_more.form_more
       JSON.stringify(form_info)
       console.log(form_info)
@@ -63,6 +69,11 @@ export default {
 
 <!--设置组件之间css独立-->
 <style scoped>
+  .col-2{
+    margin:80px 0 0 135px;
+    /* width: 100px; */
+    /* display:inline-block; */
+  }
   .container{
     margin-top: 50px;
   }
